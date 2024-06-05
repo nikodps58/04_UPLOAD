@@ -1,6 +1,7 @@
 <?php
+require_once "./display_errors.php";
+require_once './session_start.php';
 
-ini_set('display_errors', 1);
 ini_set('file_upload', 1); //para permitir subir los archivos
 ini_set('allow_url_fopen', 1); //para permitir abrir los archivos subidos
 
@@ -15,9 +16,9 @@ innodb_log_buffer_size=15M
 
 
 if($_POST){
-    $titulo = $_POST['titulo'];
-    $alt = $_POST['alt'];
+    $num_factura = $_POST['numfac'];
     $archivo = $_FILES['archivo'];
+    $usuario = $_SESSION["id_usuario"];
 
     /* comprobar que no supere el tamaño limite */
     $tamano=$archivo['size'];
@@ -32,7 +33,7 @@ if($_POST){
     $nombreArchivo = $archivo['name'];//cogemos el nombre del archivo
     $nombreArchivoDespiezado = explode(".", $nombreArchivo);//separamos el nombre de la extensión en un array
     $extensionArchivo = strtolower(end($nombreArchivoDespiezado));//pasamos a minúsculas y cogemos el último item (donde está la extensión)
-    $arrayExtensiones = array('webp', 'avif', 'jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc'); //hacemos un array donde metemos las extensiones que queremos admitir
+    $arrayExtensiones = array('jpg','zip','pdf', 'xls', 'doc'); //hacemos un array donde metemos las extensiones que queremos admitir
     if (!in_array($extensionArchivo, $arrayExtensiones)) { //comprobamos si la extensión del archivo NO está dentro del array
         header('location:index.php?e=2');
         die;
@@ -44,9 +45,8 @@ if($_POST){
 
     /* SUBIMOS A LA BBDD*/
     include "./conexion_bbdd.php";
-    $sql="INSERT INTO `imagenes`(`id_imagen`, `archivo`, `titulo`, `alt`) VALUES (NULL,'$archivoCodificado','$titulo','$alt')";
+    $sql="INSERT INTO `facturas`(`id_factura`, `num_factura`, `id_usuario`, `archivo`) VALUES (NULL,'$num_factura',$usuario,'$archivoCodificado')";
     $resultado=mysqli_query($con,$sql);
-    $id_foto=mysqli_insert_id($con);
     unset($sql,$resultado);
     mysqli_close($con);
     /* header('location:index.php?a='.$titulo."'");
@@ -54,8 +54,6 @@ if($_POST){
 
 }
 
-header('location:./subir_imagenes.php');
+header('location:./subir_facturas.php');
 
 
-
-?>
