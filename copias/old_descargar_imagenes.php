@@ -1,45 +1,21 @@
 <?php
     require_once "./recursos/display_errors.php";
-    require_once './recursos/session_start.php';
-    ini_set('allow_url_fopen', 1); //para permitir abrir los archivos subidos
+    /* ini_set('display_errors', 1); */
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descargar Imagenes</title>
+    <title>Descargar imagenes</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
-    <!-- miro si existe sesion y sino la creo -->
-    <?php
-        if(isset($_SESSION["email"])){
-            /* echo "Existe sesion";  */
-            /* echo $_SESSION["email"]; */
-            $email=$_SESSION["email"];
-            $usuario = $_SESSION["id_usuario"];
-        }else{
-             /* echo "No existe sesion";  */
-                      
-        }
-        $cquefactura='ninguno';
-        if(isset($_GET["f"])){
-            $cquefactura=$_GET["f"];
-        }
-    ?>
-    
-    <!-- nav -->
-    <h1>Descargar Imagenes de la galeria</h1>
-        
-    <?php
-    include "./nav.php"
-    ?>
+    <main>
+        <h1>Descargar Imagenes de la galeria</h1>
 
-<main>
-        
         <div class="matrix">
             <?php
             //Borramos archivos temporales
@@ -75,5 +51,5 @@
         </div>
 
     </main>
-
+</body>
 </html>
