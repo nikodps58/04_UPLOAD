@@ -1,5 +1,5 @@
 <?php
-    require_once "./display_errors.php";
+    require_once "./recursos/display_errors.php";
     /* ini_set('display_errors', 1); */
 ?>
 
@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descargar imagenes</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <main>
@@ -27,7 +27,7 @@
 
 
             //Conectar a la bbdd y consulta a tabla imágenes
-            include "./conexion_bbdd.php";
+            include "./recursos/conexion_bbdd.php";
             $sql="SELECT * FROM imagenes";
             $resultado=mysqli_query($con,$sql);
             if(mysqli_num_rows($resultado)>0){

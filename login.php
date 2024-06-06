@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 3 Ciudades - Viajes Donostia | Acceso privado</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <h1> Acceso a zona privada  </h1>
@@ -20,7 +20,7 @@
         <section id="sect_form">
             <h2> Entre sus datos</h2>
             <article>                             
-                <form action="./validar_login.php" method="post">
+                <form action="./recursos/validar_login.php" method="post">
                    <?php
                         if(isset($_GET["me"])){
                             $ctexto=$_GET["me"];

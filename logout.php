@@ -1,6 +1,6 @@
 <?php
-        require_once "./display_errors.php";
-        require_once './session_start.php';
+        require_once "./recursos/display_errors.php";
+        require_once './recursos/session_start.php';
 
 
         if(isset($_SESSION["email"])){

@@ -1,6 +1,6 @@
 <?php
-        require_once "./display_errors.php";
-        require_once './session_start.php';
+        require_once "./recursos/display_errors.php";
+        require_once './recursos/session_start.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicios de Uploadas y Dowloadss</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>    
     <main>

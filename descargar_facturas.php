@@ -1,6 +1,6 @@
 <?php
-require_once "./display_errors.php";
-require_once './session_start.php';
+require_once "./recursos/display_errors.php";
+require_once './recursos/session_start.php';
 
 ini_set('allow_url_fopen', 1); //para permitir abrir los archivos subidos
 
@@ -19,7 +19,7 @@ $cquefactura='ninguno';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Facturas</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <main>
@@ -36,7 +36,7 @@ $cquefactura='ninguno';
 
 
             //Conectar a la bbdd y consulta a tabla imágenes
-            include "./conexion_bbdd.php";
+            include "./recursos/conexion_bbdd.php";
             $sql="SELECT * FROM facturas where `id_usuario`=$usuario";
             $resultado=mysqli_query($con,$sql);
             if(mysqli_num_rows($resultado)>0){
@@ -60,7 +60,7 @@ $cquefactura='ninguno';
                     $id_usuario=$fila["id_usuario"];
                     $numfac=$fila["num_factura"];
                     $nomfac=$fila["nombre_archivo"];
-                    $imagen='<img class="imagen_factura" data-id='.$nomfac.' src="./ver_32x32.png" alt="descargar_factura"> </img>';    
+                    $imagen='<img class="imagen_factura" data-id='.$nomfac.' src="./imagenes/ver_32x32.png" alt="descargar_factura"> </img>';    
                     echo '<tr>';
                     echo '<td ALIGN="CENTER">'.$id_usuario.'</td>';
                     echo '<td ALIGN="CENTER">'.$numfac.'</td>';
@@ -135,5 +135,5 @@ $cquefactura='ninguno';
         
     </main>
 </body>
-<script src="./factura.js"></script>
+<script src="./js/factura.js"></script>
 </html>

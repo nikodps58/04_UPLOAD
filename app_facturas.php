@@ -1,6 +1,6 @@
 <?php
-require_once "./display_errors.php";
-require_once './session_start.php';
+require_once "./recursos/display_errors.php";
+require_once './recursos/session_start.php';
 
 ini_set('file_upload', 1); //para permitir subir los archivos
 ini_set('allow_url_fopen', 1); //para permitir abrir los archivos subidos
@@ -44,7 +44,7 @@ if($_POST){
     $archivoCodificado = addslashes(file_get_contents($nombreArchivoTemp)); //cogenmos el contenido y lo codificamos
 
     /* SUBIMOS A LA BBDD*/
-    include "./conexion_bbdd.php";
+    include "./recursos/conexion_bbdd.php";
     $sql="INSERT INTO `facturas`(`id_factura`, `num_factura`, `id_usuario`, `archivo`,`nombre_archivo`) VALUES (NULL,'$num_factura',$usuario,'$archivoCodificado','$nombreArchivo')";
     $resultado=mysqli_query($con,$sql);
     unset($sql,$resultado);

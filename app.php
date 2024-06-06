@@ -1,9 +1,9 @@
 <?php
 
-ini_set('display_errors', 1);
+/* ini_set('display_errors', 1); */
 ini_set('file_upload', 1); //para permitir subir los archivos
 ini_set('allow_url_fopen', 1); //para permitir abrir los archivos subidos
-
+require_once "./recursos/display_errors.php";
 
 
 /* 
@@ -24,7 +24,7 @@ if($_POST){
     $tamanoMaximoKB = "10000"; //Tamaño máximo expresado en KB
     $tamanoMaximoBytes = $tamanoMaximoKB * 1024; //Pasamos el valor a BYTES
     if($tamano > $tamanoMaximoBytes){
-        header('location:index.php?e=1');
+        header('location:./index.php?e=1');
         die;
     }
 
@@ -34,7 +34,7 @@ if($_POST){
     $extensionArchivo = strtolower(end($nombreArchivoDespiezado));//pasamos a minúsculas y cogemos el último item (donde está la extensión)
     $arrayExtensiones = array('webp', 'avif', 'jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc'); //hacemos un array donde metemos las extensiones que queremos admitir
     if (!in_array($extensionArchivo, $arrayExtensiones)) { //comprobamos si la extensión del archivo NO está dentro del array
-        header('location:index.php?e=2');
+        header('location:./index.php?e=2');
         die;
     }
 
@@ -43,7 +43,7 @@ if($_POST){
     $archivoCodificado = addslashes(file_get_contents($nombreArchivoTemp)); //cogenmos el contenido y lo codificamos
 
     /* SUBIMOS A LA BBDD*/
-    include "./conexion_bbdd.php";
+    include "./recursos/conexion_bbdd.php";
     $sql="INSERT INTO `imagenes`(`id_imagen`, `archivo`, `titulo`, `alt`) VALUES (NULL,'$archivoCodificado','$titulo','$alt')";
     $resultado=mysqli_query($con,$sql);
     $id_foto=mysqli_insert_id($con);

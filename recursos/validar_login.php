@@ -1,6 +1,6 @@
 <?php
-        require_once "./display_errors.php";
-        require_once './session_start.php';
+        require_once "../recursos/display_errors.php";
+        require_once '../recursos/session_start.php';
         
         /* Este archivo se sejcuta cuando doy al boton del fourmaulario del login */
 /* recogemos valores */
@@ -11,7 +11,7 @@
         
         /* comprobar en BBDD la existencia de usuario t password */
         /* a) abrimos bbdd */
-        include "./conexion_bbdd.php";
+        include "../recursos/conexion_bbdd.php";
 
         /* b) hacemos select a tabla usuario */
         $sql="SELECT * from `usuarios` WHERE email='$usuario' AND  pass='$pass'"; 
@@ -22,7 +22,7 @@
             unset($sql,$resultado);    
             mysqli_close($con);   
             $mensajelogin='Usuario ó password incorrecto. Corrija sus datos';
-            header("location:./login.php?e=2&me=$mensajelogin");
+            header("location:../login.php?e=2&me=$mensajelogin");
             die;
         }else{
             /* c) si existe creo la variable de sesion de este usuario */
@@ -51,13 +51,13 @@
                 
             unset($sql,$resultado,$fila); 
             mysqli_close($con);   
-            header("location:./index.php");  
+            header("location:../index.php");  
             die;  
         }
         
     }else{
         $mensajelogin='Debe introducir el usuario';
-        header("location:./login.php?&me=$mensajelogin");
+        header("location:../login.php?&me=$mensajelogin");
         die;
     }
 
