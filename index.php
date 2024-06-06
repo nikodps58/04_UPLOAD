@@ -21,18 +21,18 @@
             <?php
                 if(isset($_SESSION["email"])){
             ?>
-                    <div class="boton" id="boton01">
+                    <div class="boton">
                         <!-- <p>Subir Imagenes Imagenes</p>  -->
                         <a href="./subir_imagenes.php">Subir Imagenes</a> 
                     </div>
-                    <div class="boton" id="boton02">
+                    <div class="boton">
                         <!-- <p>Descargar Imagenes</p> -->
                         <a href="./descargar_imagenes.php">Descargar Imagenes</a>
                     </div>
-                    <div class="boton" id="boton03">
+                    <div class="boton">
                          <a href="./subir_facturas.php">Subir Facturas</a> 
                     </div>
-                    <div class="boton" id="boton04">
+                    <div class="boton">
                          <a href="./descargar_facturas.php">Descargar Facturas</a>
                     </div>
                     <div class="boton">

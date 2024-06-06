@@ -45,7 +45,7 @@ if($_POST){
 
     /* SUBIMOS A LA BBDD*/
     include "./conexion_bbdd.php";
-    $sql="INSERT INTO `facturas`(`id_factura`, `num_factura`, `id_usuario`, `archivo`) VALUES (NULL,'$num_factura',$usuario,'$archivoCodificado')";
+    $sql="INSERT INTO `facturas`(`id_factura`, `num_factura`, `id_usuario`, `archivo`,`nombre_archivo`) VALUES (NULL,'$num_factura',$usuario,'$archivoCodificado','$nombreArchivo')";
     $resultado=mysqli_query($con,$sql);
     unset($sql,$resultado);
     mysqli_close($con);
