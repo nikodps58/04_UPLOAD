@@ -102,7 +102,7 @@
         echo '<section>';
             echo '<div class="facturas">';
             $sql2="SELECT * FROM facturas where `nombre_archivo`='$cquefactura'";
-            echo $sql2;
+            //echo $sql2;
             $resultado2=mysqli_query($con,$sql2);
             if(mysqli_num_rows($resultado2)>0){
                 $fila=mysqli_fetch_array($resultado2);    

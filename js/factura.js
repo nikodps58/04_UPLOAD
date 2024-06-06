@@ -11,7 +11,7 @@ for(const imagen_factura of imagenes_facturas){
     imagen_factura.addEventListener("click", function(){
         console.log(imagen_factura.getAttribute('data-id'));
         cdato=imagen_factura.getAttribute('data-id');
-        window.open(`./descargar_facturas.php?f=${cdato}`,"_self"); 
+        window.open(`./descargar_facturas.php?f=${cdato}`,"_blank"); 
                 
     })
 }
